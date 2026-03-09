@@ -25,15 +25,15 @@ class ProductModel {
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
-      id: json['id'] ?? 0,
+      id: (json['id'] ?? 0).toInt(),
       title: json['title'] ?? 'Not title',
       slug: json['slug'] ?? 'Not slug',
-      price: json['price'].toDouble() ?? 0.0,
+      price: (json['price'] ?? 0.0).toDouble(),
       description: json['description'] ?? 'Not description',
       category: json['category'] != null
           ? CategoryModel.fromJson(json['category'])
           : CategoryModel.fromJson({}),
-      images: List<String>.from(json['images']),
+      images: List<String>.from(json['images'] ?? []),
       creationAt: json['creationAt'] != null
           ? DateTime.parse(json['creationAt'])
           : DateTime.now(),

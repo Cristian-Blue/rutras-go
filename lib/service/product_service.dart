@@ -12,4 +12,13 @@ class ProductService {
     }
     return [];
   }
+
+  Future<ProductModel> getProduct(int id) async {
+    final dio = Dio();
+    final response = await dio.get('$GET_PRODUCTS/$id');
+    if (response.statusCode == 200) {
+      return ProductModel.fromJson(response.data);
+    }
+    return ProductModel.fromJson({});
+  }
 }
