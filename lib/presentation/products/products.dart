@@ -31,7 +31,7 @@ class _ProductsState extends State<Products> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('productos')),
+      appBar: AppBar(title: const Text('Productos')),
       drawer: DrawerCustom(),
       body: Center(
         child: FutureBuilder(
@@ -40,7 +40,6 @@ class _ProductsState extends State<Products> {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(child: CircularProgressIndicator());
             } else if (snapshot.hasError) {
-              print(snapshot.error);
               return const Center(child: Text("Error"));
             } else if (snapshot.hasData) {
               final data = snapshot.data;
@@ -53,6 +52,17 @@ class _ProductsState extends State<Products> {
                     onTap: () => router.push('/product/${products[index].id}'),
                     title: Text(products[index].title),
                     subtitle: Text(products[index].description),
+                    leading: CircleAvatar(
+                      radius: 30.0,
+                      backgroundImage: NetworkImage(products[index].images[0]),
+                      backgroundColor: Colors.transparent,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                        color: const Color.fromARGB(255, 228, 228, 228),
+                        width: 1,
+                      ),
+                    ),
                   );
                 },
               );

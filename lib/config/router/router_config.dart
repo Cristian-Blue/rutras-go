@@ -9,13 +9,14 @@ import 'package:ruta_go/presentation/settings/settings.dart';
 List<RouterModel> routerConfig = [
   RouterModel(
     name: 'home',
-    screen: (context, state) => const Home(),
+    screen: (context, state) => Home(),
     title: 'Home',
     patch: '/',
     icon: Icons.home,
     description: 'Home',
     inDrawer: true,
   ),
+  /*
   RouterModel(
     name: 'naruto',
     screen: (context, state) => const Naruto(),
@@ -35,21 +36,21 @@ List<RouterModel> routerConfig = [
     inDrawer: true,
   ),
   RouterModel(
-    name: 'products',
-    screen: (context, state) => const Products(),
-    title: 'Products',
-    patch: '/products',
-    icon: Icons.abc,
-    description: 'Products',
-    inDrawer: true,
-  ),
-  RouterModel(
     name: 'settings',
     screen: (context, state) => const Settings(),
     title: 'Settings',
     patch: '/settings',
     icon: Icons.abc,
     description: 'Settings',
+    inDrawer: true,
+  ),*/
+  RouterModel(
+    name: 'products',
+    screen: (context, state) => const Products(),
+    title: 'Products',
+    patch: '/products',
+    icon: Icons.abc,
+    description: 'Products',
     inDrawer: true,
   ),
 ];

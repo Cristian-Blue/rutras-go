@@ -8,14 +8,7 @@ class Layour extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(title)),
-
-      body: Column(
-        children: [
-          Text('Esto es del layout'),
-          Expanded(child: child),
-        ],
-      ),
+      body: Column(children: [Expanded(child: child)]),
     );
   }
 }

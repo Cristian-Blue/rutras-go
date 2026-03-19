@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       routerConfig: router,
       title: 'Ruta Go',
-      theme: AppTheme(selectedColor: 2).themeData(),
+      theme: AppTheme(selectedColor: 0).themeData(),
       debugShowCheckedModeBanner: false,
     );
   }

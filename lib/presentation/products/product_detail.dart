@@ -16,6 +16,7 @@ class _ProductDetailState extends State<ProductDetail> {
   ProductModel? product;
   bool isLoading = true;
   bool hasError = false;
+  String imageUrl = '';
 
   @override
   void initState() {
@@ -30,6 +31,7 @@ class _ProductDetailState extends State<ProductDetail> {
       setState(() {
         product = response;
         isLoading = false;
+        imageUrl = response!.images.first;
       });
     } catch (e) {
       setState(() {
@@ -41,19 +43,16 @@ class _ProductDetailState extends State<ProductDetail> {
 
   @override
   Widget build(BuildContext context) {
-    /// LOADING DEL PRODUCTO
     if (isLoading) {
       return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
 
-    /// ERROR
     if (hasError) {
       return const Scaffold(
         body: Center(child: Text("Error cargando producto")),
       );
     }
 
-    /// DATA
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -66,14 +65,12 @@ class _ProductDetailState extends State<ProductDetail> {
                   bottom: Radius.circular(15),
                 ),
                 child: FadeInImage.assetNetwork(
-                  placeholder: 'img/Loading_icon.gif',
-                  image: product!.images.isNotEmpty
-                      ? product!.images.first
-                      : '',
+                  placeholder: 'assets/img/Loading_icon.gif',
+                  image: imageUrl,
                   height: 250,
                   width: double.infinity,
                   fit: BoxFit.cover,
-
+                  alignment: Alignment.center,
                   imageErrorBuilder: (context, error, stackTrace) {
                     return const SizedBox(
                       height: 250,
@@ -124,7 +121,7 @@ class _ProductDetailState extends State<ProductDetail> {
                     Chip(
                       avatar: ClipOval(
                         child: FadeInImage.assetNetwork(
-                          placeholder: 'img/Loading_icon.gif',
+                          placeholder: 'assets/img/Loading_icon.gif',
                           image: product!.category.image,
                           width: 30,
                           height: 30,
@@ -134,8 +131,36 @@ class _ProductDetailState extends State<ProductDetail> {
                       label: Text(product!.category.name),
                     ),
                     const SizedBox(height: 30),
-
-                    /// BOTON VOLVER
+                    SizedBox(
+                      width: double.infinity,
+                      child: Wrap(
+                        spacing: 10,
+                        runSpacing: 10,
+                        alignment: WrapAlignment.center,
+                        children: [
+                          ...product!.images.map((image) {
+                            return InkWell(
+                              onTap: () {
+                                setState(() {
+                                  imageUrl = image;
+                                });
+                              },
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(16),
+                                child: FadeInImage.assetNetwork(
+                                  placeholder: 'assets/img/Loading_icon.gif',
+                                  image: image,
+                                  width: 100,
+                                  height: 100,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            );
+                          }),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 30),
                     SizedBox(
                       width: double.infinity,
                       height: 55,
