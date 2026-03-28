@@ -35,6 +35,7 @@ List<RouterModel> routerConfig = [
     description: 'Pokemon',
     inDrawer: true,
   ),
+  */
   RouterModel(
     name: 'settings',
     screen: (context, state) => const Settings(),
@@ -43,7 +44,7 @@ List<RouterModel> routerConfig = [
     icon: Icons.abc,
     description: 'Settings',
     inDrawer: true,
-  ),*/
+  ),
   RouterModel(
     name: 'products',
     screen: (context, state) => const Products(),
