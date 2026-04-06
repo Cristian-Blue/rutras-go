@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ruta_go/config/router/router_model.dart';
+import 'package:ruta_go/presentation/formulario/formulario_screen.dart';
 import 'package:ruta_go/presentation/home/home.dart';
 import 'package:ruta_go/presentation/naruto/naruto.dart';
 import 'package:ruta_go/presentation/pokemon/pokemon.dart';
@@ -52,6 +53,15 @@ List<RouterModel> routerConfig = [
     patch: '/products',
     icon: Icons.abc,
     description: 'Products',
+    inDrawer: true,
+  ),
+  RouterModel(
+    name: 'formulario',
+    screen: (context, state) => FormularioScreen(),
+    title: 'Formulario',
+    patch: '/form',
+    icon: Icons.abc,
+    description: 'formulario',
     inDrawer: true,
   ),
 ];
