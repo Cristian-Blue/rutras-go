@@ -65,6 +65,8 @@ class _FormularioScreenState extends State<FormularioScreen> {
 
                 // APELLIDO
                 TextFormField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+
                   decoration: InputDecoration(labelText: 'Apellido'),
                   validator: (value) => value == null || value.isEmpty
                       ? 'Campo obligatorio'
