@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ruta_go/config/router/router_model.dart';
+import 'package:ruta_go/presentation/dbz/dbz_screen.dart';
 import 'package:ruta_go/presentation/formulario/formulario_screen.dart';
 import 'package:ruta_go/presentation/home/home.dart';
 import 'package:ruta_go/presentation/naruto/naruto.dart';
@@ -62,6 +63,15 @@ List<RouterModel> routerConfig = [
     patch: '/form',
     icon: Icons.abc,
     description: 'formulario',
+    inDrawer: true,
+  ),
+  RouterModel(
+    name: 'dbz',
+    screen: (context, state) => DbzScreen(),
+    title: 'dbz',
+    patch: '/dbz',
+    icon: Icons.abc,
+    description: 'dbz',
     inDrawer: true,
   ),
 ];
